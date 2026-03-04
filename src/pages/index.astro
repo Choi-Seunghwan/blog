@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostCard from '../components/PostCard.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('posts'))
+  .filter(post => !post.data.draft)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<BaseLayout title="chuz.dev">
+  <div class="index-content framed">
+    <h1 id="hello-there">$ whoami</h1>
+    <p>개발자 <strong>chuz</strong>입니다.</p>
+    <p>이곳에서 개발하며 배운 것들을 기록합니다.</p>
+  </div>
+  
+  <div class="posts">
+    {posts.map((post) => <PostCard post={post} />)}
+  </div>
+</BaseLayout>

@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="About">
+  <div class="page">
+    <h1>$ cat about.md</h1>
+
+    <h2>안녕하세요</h2>
+    <p>개발자 <strong>chuz</strong>입니다.</p>
+    <p><!-- 여기에 간단한 자기소개를 작성하세요 --></p>
+
+    <h2>Tech Stack</h2>
+    <ul>
+      <li><!-- 예: TypeScript, Java, Python --></li>
+      <li><!-- 예: React, Next.js, Spring Boot --></li>
+      <li><!-- 예: AWS, Docker, Kubernetes --></li>
+    </ul>
+
+    <h2>Contact</h2>
+    <ul>
+      <li>GitHub: <a href="https://github.com/" target="_blank" rel="noopener">@chuz</a></li>
+      <li>Email: <!-- your-email@example.com --></li>
+    </ul>
+  </div>
+</BaseLayout>
+
+<style>
+  .page {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+</style>

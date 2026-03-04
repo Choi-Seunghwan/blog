@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Projects">
+  <div class="page">
+    <h1>$ ls ~/projects</h1>
+
+    <div class="project">
+      <h2><a href="#">project-name</a></h2>
+      <p>프로젝트 설명을 작성하세요.</p>
+      <p><code>TypeScript</code> <code>React</code></p>
+    </div>
+
+    <hr />
+
+    <div class="project">
+      <h2><a href="#">another-project</a></h2>
+      <p>프로젝트 설명을 작성하세요.</p>
+      <p><code>Java</code> <code>Spring Boot</code></p>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .page {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .project {
+    margin: 1.5rem 0;
+  }
+
+  .project h2 {
+    margin-bottom: 0.5rem;
+  }
+</style>
