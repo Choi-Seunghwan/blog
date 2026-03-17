@@ -25,13 +25,18 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.15.7",
-    "rehype-mermaid": "^3.0.0"
+    "astro": "^5.15.7"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.5",
     "@astrojs/rss": "^4.0.13",
     "@astrojs/sitemap": "^3.6.0",
     "typescript": "^5.9.3"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "sharp"
+    ]
   }
 }
