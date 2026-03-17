@@ -267,3 +267,43 @@ sup[data-footnote-ref] a:hover {
   margin-left: 5px;
   font-size: 0.9em;
 }
+
+/* Mermaid diagrams */
+.mermaid-container {
+  margin: 25px 0;
+}
+
+.mermaid-toggle {
+  font-size: 0.85em;
+  padding: 2px 10px;
+  border-width: 2px;
+  margin-bottom: 10px;
+}
+
+.mermaid {
+  text-align: center;
+}
+
+.mermaid svg {
+  max-width: 100%;
+  height: auto;
+}
+
+.mermaid-source {
+  margin-top: 10px;
+  tab-size: 4;
+  background: color-mix(in srgb, var(--foreground) 5%, transparent) !important;
+  color: color-mix(in srgb, var(--foreground) 5%, var(--accent));
+  padding: 20px 10px;
+  font-size: 0.95em !important;
+  overflow: auto;
+  border: 1px solid color-mix(in srgb, var(--foreground) 25%, transparent);
+}
+
+.mermaid-source code {
+  background: none !important;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-size: inherit;
+}

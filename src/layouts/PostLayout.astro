@@ -53,48 +53,102 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
   </article>
   
   <script>
-    // Code copy functionality
-    document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', async () => {
+      // 1. Mermaid rendering first (before code wrappers)
+      const mermaidBlocks = document.querySelectorAll('pre.astro-code[data-language="mermaid"]');
+      if (mermaidBlocks.length > 0) {
+        const { default: mermaid } = await import('https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs');
+        mermaid.initialize({
+          startOnLoad: false,
+          theme: 'dark',
+          themeVariables: {
+            darkMode: true,
+            background: '#1a170f',
+            primaryColor: '#eec35e',
+            primaryTextColor: '#eceae5',
+            primaryBorderColor: '#eec35e',
+            lineColor: '#eec35e',
+            secondaryColor: '#2a2519',
+            tertiaryColor: '#2a2519',
+            fontFamily: 'Fira Code, JetBrains Mono, monospace',
+          },
+        });
+
+        for (const pre of mermaidBlocks) {
+          const source = pre.textContent || '';
+          const id = `mermaid-${Math.random().toString(36).slice(2, 9)}`;
+          try {
+            const { svg } = await mermaid.render(id, source);
+            const container = document.createElement('div');
+            container.className = 'mermaid-container';
+
+            const toggle = document.createElement('button');
+            toggle.className = 'mermaid-toggle';
+            toggle.textContent = '[Source]';
+            toggle.addEventListener('click', () => {
+              const code = container.querySelector('.mermaid-source') as HTMLElement;
+              if (!code) return;
+              const visible = code.style.display !== 'none';
+              code.style.display = visible ? 'none' : 'block';
+              toggle.textContent = visible ? '[Source]' : '[Hide]';
+            });
+
+            const diagram = document.createElement('div');
+            diagram.className = 'mermaid';
+            diagram.innerHTML = svg;
+
+            const sourceBlock = document.createElement('pre');
+            sourceBlock.className = 'mermaid-source';
+            sourceBlock.style.display = 'none';
+            const sourceCode = document.createElement('code');
+            sourceCode.textContent = source;
+            sourceBlock.appendChild(sourceCode);
+
+            container.appendChild(toggle);
+            container.appendChild(diagram);
+            container.appendChild(sourceBlock);
+            pre.replaceWith(container);
+          } catch (e) {
+            console.error('Mermaid render error:', e);
+          }
+        }
+      }
+
+      // 2. Code copy functionality (skip mermaid blocks, already replaced)
       const codeBlocks = document.querySelectorAll('pre.astro-code');
-      
       codeBlocks.forEach((block) => {
         const wrapper = document.createElement('div');
         wrapper.className = 'highlight';
         block.parentNode?.insertBefore(wrapper, block);
         wrapper.appendChild(block);
-        
+
         const lang = block.getAttribute('data-language') || 'text';
-        
         const titleDiv = document.createElement('div');
         titleDiv.className = 'code-title';
         titleDiv.textContent = lang;
-        
+
         if (navigator.clipboard) {
           const button = document.createElement('button');
           button.className = 'copy-button';
           button.textContent = 'Copy';
-          
           button.addEventListener('click', async () => {
             const code = block.textContent || '';
             try {
               await navigator.clipboard.writeText(code);
               button.textContent = 'Copied';
-              setTimeout(() => {
-                button.textContent = 'Copy';
-              }, 1000);
+              setTimeout(() => { button.textContent = 'Copy'; }, 1000);
             } catch (err) {
               console.error('Failed to copy:', err);
             }
           });
-          
           titleDiv.appendChild(button);
         }
-        
+
         wrapper.insertBefore(titleDiv, block);
       });
     });
   </script>
-  
+
   <!-- Twitter embed script -->
   <script is:inline async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </BaseLayout>

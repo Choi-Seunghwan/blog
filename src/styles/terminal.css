@@ -65,11 +65,26 @@ h6 {
   letter-spacing: 0;
 }
 
-h1, h2, h3, h4, h5, h6,
 p, ul, ol,
 img, figure, video,
 table {
   margin: 25px 0;
+}
+
+h1 {
+  margin: 50px 0 20px;
+}
+
+h2 {
+  margin: 45px 0 18px;
+}
+
+h3 {
+  margin: 38px 0 15px;
+}
+
+h4, h5, h6 {
+  margin: 30px 0 12px;
 }
 
 a {
@@ -205,9 +220,9 @@ input[type="radio"]:checked {
 img {
   display: block;
   max-width: 100%;
-  border: 8px solid var(--accent);
+  border: 3px solid var(--accent);
   border-radius: var(--radius);
-  padding: 8px;
+  padding: 4px;
   overflow: hidden;
 }
 
