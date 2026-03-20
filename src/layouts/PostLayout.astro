@@ -41,12 +41,6 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
       )}
     </div>
     
-    {image && (
-      <figure class="post-cover">
-        <img src={image} alt={title} />
-      </figure>
-    )}
-    
     <div class="post-content">
       <slot />
     </div>
