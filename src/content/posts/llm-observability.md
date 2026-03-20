@@ -1,4 +1,5 @@
 ---
+image: '/images/posts/llm-observability/3.png'
 title: 'LLM 가시성(Observability) & Tempo 트레이싱 PoC'
 pubDate: 2026-03-15
 tags: ['observability', 'tracing', 'llm', 'grafana', 'tempo']

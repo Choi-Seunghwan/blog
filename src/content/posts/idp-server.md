@@ -1,4 +1,5 @@
 ---
+image: '/images/posts/idp-server/1.png'
 title: 'IdP(Identity Provider) 서버 개발 : 설계 & 기술 지식 정리'
 pubDate: 2026-02-20
 author: '승환'

@@ -14,7 +14,7 @@ const posts = (await getCollection('posts'))
     {posts.length === 0 ? (
       <p>No posts yet. Check back soon!</p>
     ) : (
-      posts.map((post) => <PostCard post={post} />)
+      posts.map((post, i) => <PostCard post={post} index={i + 1} />)
     )}
   </div>
 </BaseLayout>

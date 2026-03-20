@@ -30,7 +30,7 @@ const { posts } = Astro.props;
     {posts.length === 0 ? (
       <p>No posts found with this tag.</p>
     ) : (
-      posts.map((post) => <PostCard post={post} />)
+      posts.map((post, i) => <PostCard post={post} index={i + 1} />)
     )}
   </div>
 </BaseLayout>

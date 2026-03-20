@@ -1,4 +1,5 @@
 ---
+image: '/images/posts/lol-mbti/2.png'
 title: '마케팅용 사이드 프로젝트 개발 - 리그 오브 레전드 MBTI 사이트'
 pubDate: 2022-02-10
 author: '승환'

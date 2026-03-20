@@ -1,4 +1,5 @@
 ---
+image: '/images/posts/sentry-selfhosted-poc/5.png'
 title: '모니터링/로그 수집 기술 조사: Sentry Self-hosted PoC'
 pubDate: 2026-01-03
 author: '승환'

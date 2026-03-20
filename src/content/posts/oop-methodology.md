@@ -1,4 +1,5 @@
 ---
+image: '/images/posts/oop-methodology/1.jpeg'
 title: '객체지향 방법론 고찰'
 pubDate: 2021-08-09
 author: '승환'

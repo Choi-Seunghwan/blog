@@ -38,6 +38,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     <link rel="alternate" type="application/rss+xml" title="RSS" href={`${base}rss.xml`} />
   </head>
   <body>
+    <div class="progress-bar" id="progress-bar"></div>
     <div class="container center">
       <header class="header">
         <div class="header__inner">
@@ -86,6 +87,32 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
       </footer>
     </div>
     
+    <script>
+      // ASCII progress bar
+      (() => {
+        const bar = document.getElementById('progress-bar');
+        if (!bar) return;
+        const totalW = 30;
+
+        function update() {
+          const scrollTop = window.scrollY;
+          const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+          if (docHeight <= 0) { bar.classList.remove('visible'); return; }
+
+          const pct = Math.min(scrollTop / docHeight, 1);
+          const filled = Math.round(pct * totalW);
+          const empty = totalW - filled;
+          const percent = Math.round(pct * 100);
+
+          bar.textContent = `[${'█'.repeat(filled)}${'░'.repeat(empty)}] ${percent}%`;
+          bar.classList.toggle('visible', scrollTop > 80);
+        }
+
+        window.addEventListener('scroll', update, { passive: true });
+        update();
+      })();
+    </script>
+
     <script>
       // Menu functionality
       (() => {

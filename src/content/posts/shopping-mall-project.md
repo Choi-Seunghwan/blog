@@ -1,4 +1,5 @@
 ---
+image: '/images/posts/shopping-mall-project/2.png'
 title: '쇼핑몰 프로젝트 개발 경험 정리 (본인인증/주문/결제)'
 pubDate: 2026-02-25
 author: '승환'

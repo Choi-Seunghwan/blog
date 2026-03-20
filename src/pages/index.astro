@@ -12,10 +12,10 @@ const posts = (await getCollection('posts'))
   <div class="index-content framed">
     <h1 id="hello-there">$ whoami</h1>
     <p>개발자 <strong>chuz</strong>입니다.</p>
-    <p>이곳에서 개발하며 배운 것들을 기록합니다.</p>
+    <p>이곳에서 개발하며 배운 것들을 기록합니다.<span class="cursor">_</span></p>
   </div>
-  
+
   <div class="posts">
-    {posts.map((post) => <PostCard post={post} />)}
+    {posts.map((post, i) => <PostCard post={post} index={i + 1} />)}
   </div>
 </BaseLayout>

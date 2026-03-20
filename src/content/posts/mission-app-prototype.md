@@ -1,4 +1,5 @@
 ---
+image: '/images/posts/mission-app-prototype/4.png'
 title: '미션/업적 달성 앱 프로토타입 개발 경험'
 pubDate: 2025-08-06
 author: '승환'

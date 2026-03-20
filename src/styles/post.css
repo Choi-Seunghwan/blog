@@ -7,7 +7,10 @@
   width: 100%;
   text-align: left;
   padding: 30px 0;
+  position: relative;
 }
+
+
 
 .post:not(:last-of-type) {
   border-bottom: 1px solid color-mix(in srgb, var(--foreground) 10%, transparent);
@@ -75,6 +78,168 @@
   border: 10px solid var(--accent);
   background: transparent;
   padding: 20px;
+}
+
+/* ── Post card (list) ── */
+.post.on-list .post-card-link {
+  display: flex;
+  gap: 20px;
+  text-decoration: none;
+  color: inherit;
+  align-items: stretch;
+}
+
+.post.on-list .post-card-link:hover .post-title {
+  text-decoration: underline;
+}
+
+.post.on-list .post-cover {
+  flex-shrink: 0;
+  width: 240px;
+  height: 160px;
+  margin: 0;
+  overflow: hidden;
+  border: 2px solid var(--accent);
+  border-radius: var(--radius);
+}
+
+.post.on-list .post-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  filter: grayscale(1) sepia(0.3) brightness(0.8);
+  opacity: 0.7;
+  transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+.post.on-list .post-card-link:hover .post-cover img {
+  filter: grayscale(0) sepia(0) brightness(1);
+  opacity: 1;
+}
+
+.post.on-list .post-card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+}
+
+/* ls -la style metadata */
+.post-ls-meta {
+  font-size: 0.8em;
+  color: color-mix(in srgb, var(--foreground) 45%, transparent);
+  margin-bottom: 4px;
+  font-family: inherit;
+  display: flex;
+  gap: 12px;
+}
+
+.post-ls-meta .ls-size {
+  color: color-mix(in srgb, var(--accent) 70%, transparent);
+}
+
+/* $ cat title */
+.post.on-list .post-title {
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 2px !important;
+  font-size: 0.95em;
+}
+
+.post.on-list .post-title::after {
+  display: none;
+}
+
+.post.on-list .post-title .prompt {
+  color: color-mix(in srgb, var(--foreground) 45%, transparent);
+  font-weight: normal;
+}
+
+/* Actual display title */
+.post-title-display {
+  color: var(--accent);
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.post.on-list .post-tags {
+  margin-bottom: 6px;
+  font-size: 0.85em;
+}
+
+.post.on-list .post-tags .tag {
+  color: var(--accent);
+  margin-right: 8px;
+}
+
+.post-excerpt {
+  color: color-mix(in srgb, var(--foreground) 60%, transparent);
+  font-size: 0.85em;
+  line-height: 1.5;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ── Blinking cursor ── */
+.cursor {
+  animation: blink 1s step-end infinite;
+  color: var(--accent);
+  font-weight: bold;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* ── ASCII progress bar ── */
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  font-size: 12px;
+  font-family: inherit;
+  color: var(--accent);
+  background: var(--background);
+  padding: 2px 12px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s;
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+}
+
+.progress-bar.visible {
+  opacity: 1;
+}
+
+/* Responsive: stack on small screens */
+@media (max-width: 640px) {
+  .post.on-list {
+    padding-left: 0;
+  }
+
+  .post-line-number {
+    display: none;
+  }
+
+  .post.on-list .post-card-link {
+    flex-direction: column;
+  }
+
+  .post.on-list .post-cover {
+    width: 100%;
+    height: 200px;
+  }
 }
 
 .post ul {

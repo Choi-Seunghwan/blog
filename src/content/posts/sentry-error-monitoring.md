@@ -1,4 +1,5 @@
 ---
+image: '/images/posts/sentry-error-monitoring/11.png'
 title: '에러 모니터링 시스템 기술 조사 (Sentry)'
 pubDate: 2022-06-10
 author: '승환'
