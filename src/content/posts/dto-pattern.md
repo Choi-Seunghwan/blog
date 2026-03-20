@@ -2,7 +2,7 @@
 image: '/images/posts/dto-pattern/1.png'
 title: 'DTO 패턴을 사용하여 계층간 종속성 줄이기'
 pubDate: 2022-07-25
-author: '승환'
+author: 'chuz'
 tags: ['개발']
 ---
 

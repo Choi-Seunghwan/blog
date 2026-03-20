@@ -2,7 +2,7 @@
 image: '/images/posts/node-bundle-analyzer/6.png'
 title: 'node 프로젝트 패키지 최적화 (bundle analyzer)'
 pubDate: 2023-04-28
-author: '승환'
+author: 'chuz'
 tags: ['개발']
 ---
 

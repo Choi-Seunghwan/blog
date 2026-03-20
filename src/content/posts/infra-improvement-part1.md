@@ -2,7 +2,7 @@
 image: '/images/posts/infra-improvement-part1/3.png'
 title: '인프라 환경을 개선하여, 우리 서비스에 기여하기… 1부'
 pubDate: 2023-10-23
-author: '승환'
+author: 'chuz'
 tags: ['개발']
 ---
 

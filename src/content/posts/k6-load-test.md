@@ -2,7 +2,7 @@
 image: '/images/posts/k6-load-test/5.png'
 title: 'k6 로 부하 테스트 하기 (LLM AI 서비스)'
 pubDate: 2026-01-29
-author: '승환'
+author: 'chuz'
 tags: ['개발']
 ---
 

@@ -2,7 +2,7 @@
 image: '/images/posts/freelancer-shopping-mall/1.png'
 title: '첫 프리랜서 경험, 그리고 쇼핑몰 예제 프로젝트 개발'
 pubDate: 2025-04-04
-author: '승환'
+author: 'chuz'
 tags: []
 ---
 
