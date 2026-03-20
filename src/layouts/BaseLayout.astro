@@ -55,19 +55,15 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
               <ul class="menu__dropdown">
                 <li><a href={`${base}about/`}>About</a></li>
                 <li><a href={`${base}posts/`}>Posts</a></li>
-                <li><a href={`${base}tags/`}>Tags</a></li>
-                <li><a href={`${base}projects/`}>Projects</a></li>
               </ul>
             </li>
           </ul>
         </div>
-        
+
         <nav class="navigation-menu">
           <ul class="navigation-menu__inner menu--desktop">
             <li><a href={`${base}about/`}>About</a></li>
             <li><a href={`${base}posts/`}>Posts</a></li>
-            <li><a href={`${base}tags/`}>Tags</a></li>
-            <li><a href={`${base}projects/`}>Projects</a></li>
           </ul>
         </nav>
       </header>
@@ -80,8 +76,6 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
         <div class="footer__inner">
           <div class="copyright">
             <span>© 2026 chuz.dev</span>
-            <span class="separator">::</span>
-            <span>Powered by <a href="https://astro.build">Astro</a></span>
           </div>
         </div>
       </footer>

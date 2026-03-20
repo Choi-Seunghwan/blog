@@ -9,11 +9,101 @@ const posts = (await getCollection('posts'))
 ---
 
 <BaseLayout title="chuz.dev">
-  <div class="index-content framed">
-    <h1 id="hello-there">$ whoami</h1>
-    <p>개발자 <strong>chuz</strong>입니다.</p>
-    <p>이곳에서 개발하며 배운 것들을 기록합니다.<span class="cursor">_</span></p>
+  <div class="index-content framed" id="mini-terminal">
+    <div id="terminal-history">
+      <p class="terminal-line"><span class="prompt-symbol">$</span> whoami</p>
+      <p class="terminal-output">chuz — Developer</p>
+
+      <p class="terminal-line"><span class="prompt-symbol">$</span> cat links.txt</p>
+      <p class="terminal-output">→ GitHub <a href="https://github.com/Choi-Seunghwan" target="_blank" rel="noopener">github.com/Choi-Seunghwan</a></p>
+      <p class="terminal-output">→ Email  <a href="mailto:choiseunghwan.tech@gmail.com">choiseunghwan.tech@gmail.com</a></p>
+    </div>
+    <div class="terminal-input-line">
+      <span class="prompt-symbol">$</span>
+      <span id="terminal-input" contenteditable="true" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off" data-placeholder="type 'help' for commands"></span><span class="cursor">_</span>
+    </div>
   </div>
+
+  <script>
+    (() => {
+      const history = document.getElementById('terminal-history');
+      const input = document.getElementById('terminal-input');
+      const terminal = document.getElementById('mini-terminal');
+      if (!history || !input || !terminal) return;
+
+      const base = document.querySelector('meta[name="generator"]')?.closest('head')?.querySelector('link[rel="canonical"]')?.getAttribute('href')?.replace(/\/+$/, '') || '';
+      const basePath = (() => {
+        const b = import.meta.env?.BASE_URL || '/';
+        return b.endsWith('/') ? b : b + '/';
+      })();
+
+      const commands: Record<string, () => string | { html: string } | { action: string }> = {
+        whoami: () => 'chuz — Developer',
+        help: () => ({ html: 'available commands: <span style="color:var(--accent)">whoami  help  cat [file]  ls  cd [dir]  clear</span>' }),
+        cat: () => ({ html: 'usage: cat [file]\n  <span style="color:var(--accent)">cat links.txt</span>  <span style="color:color-mix(in srgb, var(--foreground) 50%, transparent)">— contact & links</span>\n  <span style="color:var(--accent)">cat about.md</span>   <span style="color:color-mix(in srgb, var(--foreground) 50%, transparent)">— about me</span>' }),
+        cd: () => ({ html: 'usage: cd [dir]\n  <span style="color:var(--accent)">cd posts</span>   <span style="color:var(--accent)">cd about</span>   <span style="color:var(--accent)">cd tags</span>   <span style="color:var(--accent)">cd projects</span>' }),
+        'cat links.txt': () => ({ html: '→ GitHub <a href="https://github.com/Choi-Seunghwan" target="_blank" rel="noopener">github.com/Choi-Seunghwan</a>\n→ Email  <a href="mailto:choiseunghwan.tech@gmail.com">choiseunghwan.tech@gmail.com</a>' }),
+        'cat about.md': () => ({ action: `${basePath}about/` }),
+        ls: () => ({ html: '<span style="color:var(--accent)">posts/</span>  <span style="color:var(--accent)">about/</span>  <span style="color:var(--accent)">tags/</span>  <span style="color:var(--accent)">projects/</span>  links.txt' }),
+        'cd posts': () => ({ action: `${basePath}posts/` }),
+        'cd about': () => ({ action: `${basePath}about/` }),
+        'cd tags': () => ({ action: `${basePath}tags/` }),
+        'cd projects': () => ({ action: `${basePath}projects/` }),
+        clear: () => ({ html: '__clear__' }),
+      };
+
+      function addLine(cls: string, content: string, isHtml = false) {
+        const p = document.createElement('p');
+        p.className = cls;
+        if (isHtml) p.innerHTML = content;
+        else p.textContent = content;
+        history!.appendChild(p);
+      }
+
+      function execute(cmd: string) {
+        const trimmed = cmd.trim().toLowerCase();
+        addLine('terminal-line', `$ ${cmd.trim()}`);
+        const handler = commands[trimmed];
+
+        if (!trimmed) return;
+
+        if (trimmed === 'clear') {
+          history!.innerHTML = '';
+          return;
+        }
+
+        if (!handler) {
+          addLine('terminal-output', `zsh: command not found: ${trimmed.split(' ')[0]}`);
+          return;
+        }
+
+        const result = handler();
+        if (typeof result === 'string') {
+          addLine('terminal-output', result);
+        } else if ('action' in result) {
+          addLine('terminal-output', `navigating...`);
+          setTimeout(() => window.location.href = result.action, 300);
+        } else {
+          result.html.split('\n').forEach(line => addLine('terminal-output', line, true));
+        }
+      }
+
+      input.addEventListener('keydown', (e: KeyboardEvent) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          const cmd = input.textContent || '';
+          input.textContent = '';
+          execute(cmd);
+          terminal.scrollTop = terminal.scrollHeight;
+        }
+      });
+
+      // Focus input when clicking anywhere in terminal
+      terminal.addEventListener('click', () => {
+        input.focus();
+      });
+    })();
+  </script>
 
   <div class="posts">
     {posts.map((post, i) => <PostCard post={post} index={i + 1} />)}

@@ -39,9 +39,17 @@ if (!excerpt && post.body) {
   if (excerpt.length >= 150) excerpt += '…';
 }
 
-// Estimate reading time (Korean ~350 chars/min)
-const bodyLength = post.body?.length || 0;
-const readingMin = Math.max(1, Math.round(bodyLength / 350));
+// Estimate reading time (Korean ~350 chars/min, strip markdown syntax)
+const plainText = (post.body || '')
+  .replace(/^---[\s\S]*?---\s*/m, '')
+  .replace(/```[\s\S]*?```/g, '')
+  .replace(/!\[.*?\]\(.*?\)/g, '')
+  .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+  .replace(/^#+\s+/gm, '')
+  .replace(/[*_`~>|]/g, '')
+  .replace(/\n+/g, ' ')
+  .trim();
+const readingMin = Math.max(1, Math.round(plainText.length / 700));
 
 // Format date for ls -la style
 const d = post.data.pubDate;

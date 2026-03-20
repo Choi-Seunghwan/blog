@@ -40,6 +40,90 @@
   padding: 20px;
 }
 
+/* Terminal session lines */
+.terminal-line {
+  margin: 0;
+  margin-top: 16px;
+  color: var(--foreground);
+}
+
+.terminal-line:first-child {
+  margin-top: 0;
+}
+
+.terminal-line .prompt-symbol {
+  color: var(--accent);
+  font-weight: bold;
+  margin-right: 6px;
+}
+
+.terminal-output {
+  margin: 2px 0 0 18px;
+  color: color-mix(in srgb, var(--foreground) 80%, transparent);
+}
+
+.terminal-output a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.terminal-output a:hover {
+  text-decoration: underline;
+}
+
+/* Interactive terminal input */
+.terminal-input-line {
+  display: flex;
+  align-items: center;
+  margin-top: 16px;
+  color: var(--foreground);
+}
+
+.terminal-input-line .prompt-symbol {
+  color: var(--accent);
+  font-weight: bold;
+  margin-right: 6px;
+  flex-shrink: 0;
+}
+
+#terminal-input {
+  outline: none;
+  border: none;
+  background: none;
+  color: var(--foreground);
+  font: inherit;
+  min-width: 1px;
+  caret-color: transparent;
+  position: relative;
+}
+
+#terminal-input:empty::before {
+  content: attr(data-placeholder);
+  color: color-mix(in srgb, var(--foreground) 25%, transparent);
+  pointer-events: none;
+  transition: color 0.2s;
+}
+
+.terminal-input-line:hover #terminal-input:empty::before {
+  color: color-mix(in srgb, var(--foreground) 50%, transparent);
+}
+
+#terminal-input:focus ~ .cursor,
+.terminal-input-line:hover .cursor {
+  visibility: visible;
+}
+
+.terminal-input-line .cursor {
+  animation: blink 1s step-end infinite;
+  color: var(--accent);
+  font-weight: bold;
+}
+
+.terminal-input-line:hover {
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+  cursor: text;
+}
+
 /* Figure with caption - matching Hugo theme */
 figure {
   display: inline-block;
