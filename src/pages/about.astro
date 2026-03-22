@@ -3,31 +3,225 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title="About">
-  <div class="page">
-    <h1>$ cat about.md</h1>
+  <div class="about-terminal">
 
-    <h2>안녕하세요</h2>
-    <p>개발자 <strong>chuz</strong>입니다.</p>
-    <p><!-- 여기에 간단한 자기소개를 작성하세요 --></p>
+    <div class="cmd-block">
+      <div class="cmd">$ cat tech-stack.txt</div>
+      <div class="output stack-grid">
+        <div class="stack-group">
+          <span class="stack-label">Backend</span>
+          <span class="stack-items">FastAPI, NestJS, Java Spring</span>
+        </div>
+        <div class="stack-group">
+          <span class="stack-label">Frontend</span>
+          <span class="stack-items">React, Next.js, Vue, Nuxt.js</span>
+        </div>
+        <div class="stack-group">
+          <span class="stack-label">Database</span>
+          <span class="stack-items">PostgreSQL, MongoDB</span>
+        </div>
+        <div class="stack-group">
+          <span class="stack-label">Observability</span>
+          <span class="stack-items">Grafana, Prometheus, Loki, Sentry, Mixpanel</span>
+        </div>
+        <div class="stack-group">
+          <span class="stack-label">Testing</span>
+          <span class="stack-items">k6, Jest, Pytest</span>
+        </div>
+      </div>
+    </div>
 
-    <h2>Tech Stack</h2>
-    <ul>
-      <li><!-- 예: TypeScript, Java, Python --></li>
-      <li><!-- 예: React, Next.js, Spring Boot --></li>
-      <li><!-- 예: AWS, Docker, Kubernetes --></li>
-    </ul>
+    <div class="cmd-block">
+      <div class="cmd">$ cat links.txt</div>
+      <div class="output">
+        <div class="link-item">
+          <span class="link-arrow">→</span>
+          <span class="link-label">GitHub</span>
+          <a href="https://github.com/Choi-Seunghwan" target="_blank" rel="noopener">github.com/Choi-Seunghwan</a>
+        </div>
+        <div class="link-item">
+          <span class="link-arrow">→</span>
+          <span class="link-label">Email</span>
+          <a href="mailto:choiseunghwan.tech@gmail.com">choiseunghwan.tech@gmail.com</a>
+        </div>
+        <div class="link-item">
+          <span class="link-arrow">→</span>
+          <span class="link-label">Blog</span>
+          <a href="https://chuz.dev">chuz.dev</a>
+        </div>
+      </div>
+    </div>
 
-    <h2>Contact</h2>
-    <ul>
-      <li>GitHub: <a href="https://github.com/" target="_blank" rel="noopener">@chuz</a></li>
-      <li>Email: <!-- your-email@example.com --></li>
-    </ul>
+    <div class="cmd-block">
+      <div class="cmd-prompt">$ <span class="cursor">_</span></div>
+    </div>
+
   </div>
 </BaseLayout>
 
 <style>
-  .page {
+  .about-terminal {
     max-width: 760px;
     margin: 0 auto;
+  }
+
+  .cmd-block {
+    margin-bottom: 2rem;
+  }
+
+  .cmd {
+    color: var(--accent, #e0a526);
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+
+  .cmd-prompt {
+    color: var(--accent, #e0a526);
+    font-weight: bold;
+  }
+
+  .output {
+    padding-left: 1.5rem;
+    color: var(--text, #c8c8c8);
+  }
+
+  .output p {
+    margin: 0.3rem 0;
+    line-height: 1.6;
+  }
+
+  /* Tech Stack */
+  .stack-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .stack-group {
+    display: flex;
+    gap: 1rem;
+    align-items: baseline;
+  }
+
+  .stack-label {
+    color: var(--accent, #e0a526);
+    min-width: 120px;
+    font-weight: bold;
+    flex-shrink: 0;
+  }
+
+  .stack-items {
+    color: var(--text, #c8c8c8);
+    opacity: 0.85;
+  }
+
+  /* Career Table */
+  .career-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .career-table tr:not(.career-desc) {
+    border-top: 1px solid color-mix(in srgb, var(--accent, #e0a526) 20%, transparent);
+  }
+
+  .career-table tr:not(.career-desc):first-child {
+    border-top: none;
+  }
+
+  .career-table td {
+    padding: 0.4rem 0;
+    vertical-align: top;
+  }
+
+  .career-period {
+    color: var(--text, #c8c8c8);
+    opacity: 0.5;
+    white-space: nowrap;
+    padding-right: 1.5rem !important;
+    font-size: 0.85em;
+  }
+
+  .career-company {
+    color: var(--accent, #e0a526);
+    font-weight: bold;
+    white-space: nowrap;
+    padding-right: 1.5rem !important;
+  }
+
+  .career-role {
+    color: var(--text, #c8c8c8);
+    opacity: 0.7;
+    white-space: nowrap;
+    font-size: 0.85em;
+  }
+
+  .career-desc td {
+    color: var(--text, #c8c8c8);
+    opacity: 0.6;
+    font-size: 0.85em;
+    padding: 0 0 1rem 0;
+    line-height: 1.5;
+  }
+
+  /* Links */
+  .link-item {
+    display: flex;
+    gap: 0.5rem;
+    align-items: baseline;
+    margin-bottom: 0.3rem;
+  }
+
+  .link-arrow {
+    color: var(--accent, #e0a526);
+  }
+
+  .link-label {
+    color: var(--text, #c8c8c8);
+    min-width: 60px;
+  }
+
+  .link-item a {
+    color: var(--accent, #e0a526);
+    opacity: 0.8;
+    text-decoration: none;
+  }
+
+  .link-item a:hover {
+    opacity: 1;
+    text-decoration: underline;
+  }
+
+  /* Cursor */
+  .cursor {
+    animation: blink 1s step-end infinite;
+  }
+
+  @keyframes blink {
+    50% { opacity: 0; }
+  }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    .stack-group {
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .stack-label {
+      min-width: auto;
+    }
+
+    .career-table tr:not(.career-desc) {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+    }
+
+    .career-period,
+    .career-company,
+    .career-role {
+      padding-right: 0.5rem !important;
+    }
   }
 </style>
