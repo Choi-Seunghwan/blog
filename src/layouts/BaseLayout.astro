@@ -84,22 +84,23 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     <script>
       // ASCII progress bar
       (() => {
-        const bar = document.getElementById('progress-bar');
+        const bar = document.getElementById('progress-bar') as HTMLElement | null;
         if (!bar) return;
+        const progressBar = bar;
         const totalW = 30;
 
         function update() {
           const scrollTop = window.scrollY;
           const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-          if (docHeight <= 0) { bar.classList.remove('visible'); return; }
+          if (docHeight <= 0) { progressBar.classList.remove('visible'); return; }
 
           const pct = Math.min(scrollTop / docHeight, 1);
           const filled = Math.round(pct * totalW);
           const empty = totalW - filled;
           const percent = Math.round(pct * 100);
 
-          bar.textContent = `[${'█'.repeat(filled)}${'░'.repeat(empty)}] ${percent}%`;
-          bar.classList.toggle('visible', scrollTop > 80);
+          progressBar.textContent = `[${'█'.repeat(filled)}${'░'.repeat(empty)}] ${percent}%`;
+          progressBar.classList.toggle('visible', scrollTop > 80);
         }
 
         window.addEventListener('scroll', update, { passive: true });
