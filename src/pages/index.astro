@@ -40,14 +40,13 @@ const posts = (await getCollection('posts'))
         whoami: () => 'chuz — Developer',
         help: () => ({ html: 'available commands: <span style="color:var(--accent)">whoami  help  cat [file]  ls  cd [dir]  clear</span>' }),
         cat: () => ({ html: 'usage: cat [file]\n  <span style="color:var(--accent)">cat links.txt</span>  <span style="color:color-mix(in srgb, var(--foreground) 50%, transparent)">— contact & links</span>\n  <span style="color:var(--accent)">cat about.md</span>   <span style="color:color-mix(in srgb, var(--foreground) 50%, transparent)">— about me</span>' }),
-        cd: () => ({ html: 'usage: cd [dir]\n  <span style="color:var(--accent)">cd posts</span>   <span style="color:var(--accent)">cd about</span>   <span style="color:var(--accent)">cd tags</span>   <span style="color:var(--accent)">cd projects</span>' }),
+        cd: () => ({ html: 'usage: cd [dir]\n  <span style="color:var(--accent)">cd posts</span>   <span style="color:var(--accent)">cd about</span>   <span style="color:var(--accent)">cd tags</span>' }),
         'cat links.txt': () => ({ html: '→ GitHub <a href="https://github.com/Choi-Seunghwan" target="_blank" rel="noopener">github.com/Choi-Seunghwan</a>\n→ Email  <a href="mailto:choiseunghwan.tech@gmail.com">choiseunghwan.tech@gmail.com</a>' }),
         'cat about.md': () => ({ action: `${basePath}about/` }),
-        ls: () => ({ html: '<span style="color:var(--accent)">posts/</span>  <span style="color:var(--accent)">about/</span>  <span style="color:var(--accent)">tags/</span>  <span style="color:var(--accent)">projects/</span>  links.txt' }),
+        ls: () => ({ html: '<span style="color:var(--accent)">posts/</span>  <span style="color:var(--accent)">about/</span>  <span style="color:var(--accent)">tags/</span>  links.txt' }),
         'cd posts': () => ({ action: `${basePath}posts/` }),
         'cd about': () => ({ action: `${basePath}about/` }),
         'cd tags': () => ({ action: `${basePath}tags/` }),
-        'cd projects': () => ({ action: `${basePath}projects/` }),
         clear: () => ({ html: '__clear__' }),
       };
 
