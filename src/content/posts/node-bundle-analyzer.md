@@ -3,7 +3,7 @@ image: '/images/posts/node-bundle-analyzer/6.png'
 title: 'node 프로젝트 패키지 최적화 (bundle analyzer)'
 pubDate: 2023-04-28
 author: 'chuz'
-tags: ['개발']
+tags: ['Node.js', '최적화']
 ---
 
 나는 재직 중인 팀에서 `NestJs` 기반의 신규 백엔드 서버를 구축하였다. 기존 레거시 `node`, `express` 기반의 프로젝트는 5~6년 전에 작업된 내용이 많아 이전 기능을 참조하면서 신규 백엔드 서버에 기능을 옮겨 올 때에는 여러 고려해야 할 점이 있었다. 특히 구버전 패키지와 관련된 것들이 그러하다.

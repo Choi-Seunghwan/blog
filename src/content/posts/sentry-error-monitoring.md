@@ -3,7 +3,7 @@ image: '/images/posts/sentry-error-monitoring/11.png'
 title: '에러 모니터링 시스템 기술 조사 (Sentry)'
 pubDate: 2022-06-10
 author: 'chuz'
-tags: ['개발']
+tags: ['Sentry', '모니터링']
 ---
 
 > 해당 문서는 사내 에러 모니터링 시스템 도입을 위해 기술 조사를 했던 내용을 개발팀 내부에 공유 했던 문서입니다.

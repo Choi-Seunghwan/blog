@@ -3,7 +3,7 @@ image: '/images/posts/mission-app-prototype/4.png'
 title: '미션/업적 달성 앱 프로토타입 개발 경험'
 pubDate: 2025-08-06
 author: 'chuz'
-tags: []
+tags: ['React Native', '사이드프로젝트']
 ---
 
 ![Simulator Screenshot - iPhone 16 Pro - 2025-08-06 at 22.19.19.png](/images/posts/mission-app-prototype/4.png)

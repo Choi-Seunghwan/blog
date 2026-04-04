@@ -3,7 +3,7 @@ image: '/images/posts/oop-methodology/1.jpeg'
 title: '객체지향 방법론 고찰'
 pubDate: 2021-08-09
 author: 'chuz'
-tags: ['개발']
+tags: ['OOP', '설계']
 ---
 
 *이 글은 책 '객체지향의 사실과 오해'를 읽고 느낀 소감을 적은 글입니다.*

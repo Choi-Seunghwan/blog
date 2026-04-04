@@ -3,7 +3,7 @@ image: '/images/posts/sentry-selfhosted-poc/5.png'
 title: '모니터링/로그 수집 기술 조사: Sentry Self-hosted PoC'
 pubDate: 2026-01-03
 author: 'chuz'
-tags: ['개발']
+tags: ['Sentry', 'EKS', '모니터링']
 ---
 
 아래 내용은 팀에 기술 공유 목적으로 작성 되었던 내용 입니다.

@@ -3,7 +3,7 @@ image: '/images/posts/startup-infra-eks-migration/1.png'
 title: '스타트업 인프라 이전 경험기 레거시에서 ~ AWS EKS 이전까지…'
 pubDate: 2022-11-07
 author: 'chuz'
-tags: ['개발']
+tags: ['EKS', '인프라', 'Kubernetes']
 ---
 
 ---

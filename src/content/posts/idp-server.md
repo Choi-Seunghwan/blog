@@ -3,7 +3,7 @@ image: '/images/posts/idp-server/1.png'
 title: 'IdP(Identity Provider) 서버 개발 : 설계 & 기술 지식 정리'
 pubDate: 2026-02-20
 author: 'chuz'
-tags: ['개발']
+tags: ['OAuth', '인증', 'FastAPI']
 ---
 
 사내 서비스가 여러 개로 늘어나거나, 사이드 프로젝트/신규 서비스가 생길 때마다, 로그인을 어떻게 붙일지가 고민거리였다.

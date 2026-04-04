@@ -3,7 +3,7 @@ image: '/images/posts/k6-load-test/5.png'
 title: 'k6 로 부하 테스트 하기 (LLM AI 서비스)'
 pubDate: 2026-01-29
 author: 'chuz'
-tags: ['개발']
+tags: ['k6', '부하테스트', 'LLM']
 ---
 
 현재 맡고 있는 프로젝트에서 지원 사업 평가를 준비하면서, 서비스가 분당 500 요청 (500 RPM) 을 안정적으로 처리할 수 있는지 증명해야 했다.

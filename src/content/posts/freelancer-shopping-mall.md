@@ -3,7 +3,7 @@ image: '/images/posts/freelancer-shopping-mall/1.png'
 title: '첫 프리랜서 경험, 그리고 쇼핑몰 예제 프로젝트 개발'
 pubDate: 2025-04-04
 author: 'chuz'
-tags: []
+tags: ['NestJS', 'AWS', '프리랜서']
 ---
 
 ### 첫 프리랜서 백엔드 개발자 경험
