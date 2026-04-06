@@ -269,8 +269,6 @@ Rate Limiter가 Auth 이후에 실행되어야 `request.state.user_id`를 식별
 
 이 둘은 별개의 레이어이고, 이번에 구현한 건 애플리케이션 레벨의 비용 보호에 해당한다.
 
-구현 자체는 Redis Sorted Set의 score 기반 연산이 Sliding Window와 잘 맞아서 어렵지 않았다. 오히려 어려웠던 건 정책적 결정이었다. POST만 제한할 것인지, 제한 수치를 얼마로 잡을 것인지, Redis 장애 시 어떻게 할 것인지 — 이런 판단들이 코드 작성보다 시간이 걸렸다.
+구현 자체는 Redis Sorted Set의 score 기반  Sliding Window와 잘 맞아서 어렵지 않았다.
 
-변경 범위는 신규 파일 5개(약 200줄)와 기존 파일 수정 2개(약 10줄)로, 기존 코드에 영향 없이 미들웨어 추가만으로 적용되었다.
-
-향후에는 플랜별 쿼터 (`resolve_policy`에 사용자 플랜 파라미터 추가), Prometheus 메트릭 노출, 트래픽 증가 시 Lua Script 전환 등을 고려하고 있다.
+향후에는 플랜별 쿼터, 트래픽 증가 시 Lua Script 전환 등을 고려하고 있다.
