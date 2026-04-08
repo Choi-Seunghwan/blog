@@ -2,6 +2,7 @@
 title: 'LLM 비용 보호를 위한 Sliding Window Rate Limiter 구현기'
 pubDate: 2026-04-04
 tags: ['rate-limiting', 'redis', 'fastapi', 'sliding-window']
+image: '/images/posts/rate-limiter/cover.png'
 ---
 
 Sentencify 의 핵심 비용 구조는 LLM API 호출이다. 1회 교정 요청 당 여러 LLM을 병렬 호출하는 구조이며, 혹여나 비정상적이거나 악의적인 대량 요청이 들어오면 LLM API 비용이 순식간에 폭증할 수 있는 문제점이 있다.
