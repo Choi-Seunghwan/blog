@@ -2,6 +2,7 @@
   "name": "astro-theme-terminal",
   "type": "module",
   "version": "1.0.0",
+  "packageManager": "pnpm@10.26.1",
   "description": "A terminal-inspired theme for Astro, ported from Hugo Terminal Theme by panr",
   "license": "MIT",
   "author": "Dennis Klappe",
